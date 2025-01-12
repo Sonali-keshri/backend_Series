@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
     res.render("index"); // Ensure that "index.ejs" exists in the "views" directory
 });
 
+app.get("/read", (req, res) => {
+    res.render("read"); 
+});
+
 // Start the server
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
