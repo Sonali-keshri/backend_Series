@@ -14,20 +14,36 @@
         <a href="/" class=" text-blue-600 ">
             < Go to Home page </a>
                 <h1 class="text-3xl text-gray-600 font-bold my-4">All Users </h1>
-                <div class="w-60 h-72 bg-zinc-900 p-2 rounded-md">
-                    <div class="w-full bg-zinc-800 h-40 rounded-md mb-2 ">
-                        <img src="https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="img" class="w-full h-full object-fit object-top rounded-md"/>
-                    </div>
-                    <div class="">
-                        <div>
-                            <p>Sonali Keshri</p>
-                            <p class="text-zinc-500">email@gmail.com</p>
-                        </div>
-                        <div class="mt-8">
-                            <button class="">Edit user</button>
-                            <button class="px-3 text-red-600">Delete user</button>
-                        </div>
-                    </div>
+                <div class="flex flex-wrap gap-4">
+
+                    <% if(users.length> 0){ %>
+                        <% users.forEach(user=> { %>
+                            <div class="w-60 h-72 bg-zinc-900 p-2 rounded-md">
+                                <div class="w-full bg-zinc-800 h-40 rounded-md mb-2 ">
+                                    <img src="<%= user.imageURL %>" alt="img"
+                                        class="w-full h-full object-cover object-top rounded-md" />
+                                </div>
+                                <div class="">
+                                    <div>
+                                        <p>
+                                            <%= user.name %>
+                                        </p>
+                                        <p class="text-zinc-600">
+                                            <%= user.email %>
+                                        </p>
+                                    </div>
+                                    <div class="mt-8">
+                                        <a  href="/edit/<%= user._id %>" class="">Edit user</a>
+                                        <a href="/delete/<%= user._id %>"  class="px-3 text-red-600">Delete user</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% })%>
+                                <% } else { %>
+                                    <p class="text-red-600 text-2xl text-center">No User founds</p>
+                                    <% } %>
+
+
                 </div>
                 <script src="/javascript/script.js">
 
